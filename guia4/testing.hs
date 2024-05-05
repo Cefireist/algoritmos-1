@@ -1,16 +1,15 @@
-module Main where
-import Catorce
+import Ejercicio1
 import Test.HUnit
 
+testfibo = test [
+    "Caso Base 1: fib 0" ~: (fibonacci 0) ~?= 0,
+    "Caso Base 2: fib 1" ~: (fibonacci 1) ~?= 1,
+    "Caso recursivo fib 2" ~: (fibonacci 2) ~?= 1
+                ]
 
-
-Main = runTestTT Test
-
---tests = test [
---Caso1 ~: (sumaPotencias 2 1 1) ~?= 4,
---"caso2" ~: (sumaPotencias 2 2 2) ~?= 36,
---"caso3" ~: (sumaPotencias 2 3 3) ~?=260,
---]
-
-test1 :: Test
-test1 = TestCase (assertEqual "should return 4" 4 (sumaPotencias 2 1 1))
+{-
+importante al nombre del archivo comenzarlo con mayuscula, que coincida el nombre 
+del archivo con el module del mismo, puede tener numeros al final
+para ejecutar el test se escribe:
+testTT testfibo 
+-}

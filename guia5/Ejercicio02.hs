@@ -37,12 +37,12 @@ eliminarRepetidos [x] = [x]
 eliminarRepetidos (x:xs)    | pertenece x xs = eliminarRepetidos xs
                             | otherwise = x:(eliminarRepetidos xs)
 
+
 mismosElementos :: (Eq t) => [t] -> [t] -> Bool
 mismosElementos [] [] = True
 mismosElementos [] _ = False
 mismosElementos _ [] = False
-mismosElementos (x:xs) (y:ys)   | pertenece x (y:ys) == False || pertenece y (x:xs) == False = False
-                                | otherwise = mismosElementos (quitarTodos x xs) (quitarTodos x ys)
+mismosElementos (x:xs) (y:ys) = mismosElementos (quitarTodos x (x:xs)) (quitarTodos x (y:ys))
 
 
 principio :: (Eq t) => [t] -> [t]

@@ -31,4 +31,4 @@ maximo2 (x:xs)  | x > maximo2 xs = xs
 
 ordenar :: [Integer] -> [Integer]
 ordenar [] = []
-ordenar (x:xs) = ordenar (quitar maximo(x) xs) ++ [maximo(x:xs)]
+ordenar (x:xs) = ordenar (quitar maximo(x:xs) xs) ++ [maximo(x:xs)]
