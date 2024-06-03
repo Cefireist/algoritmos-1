@@ -95,25 +95,36 @@ def saldo_actual(historial:list[(chr,int)]) -> int:
     return saldo
 
 
-def pertenece(letra:chr,lista:list[(chr,chr)]) -> (chr,chr):
+      
+# si el elemento esta en la lista, devuelve su posicion. si no esta en la lista devuelve -1          
+def obtener_posicion(letra:chr,lista:list[(chr,chr)]) -> int:
+    posicion = -1
     for i in lista:
+        posicion += 1
         if letra == i[0] or letra == i[1]:
-            return i
-def es_vocal(letra:chr) -> bool:
-    vocales = [('a','A'),('e','E'),('i','I'),('o','O'),('u','U')]
-    return pertenece(letra,vocales)
+            return posicion
+    return -1
 
-def quitar(vocal:(chr,chr), vocales:[(chr,chr)]) -> [(chr,chr)]:
+#print(obtener_posicion(('e','E'),[('a','A'),('e','E'),('i','I'),('o','O'),('u','U')]))
+
+# recibe una posicion, una lista de tuplas y elimina la tupla en la posicion dada
+def quitar(posicion:int, vocales:[(chr,chr)]) -> [(chr,chr)]:
     nuevo:[(chr,chr)]  = []
-    for i in vocales:
-        if i != vocal:    
-            nuevo.append(i)
+    for i in range(0, len(vocales)):
+        if i != posicion:    
+            nuevo.append(vocales[i])
     return nuevo
 
+#print(quitar(1,[('a','A'),('e','E'),('i','I'),('o','O'),('u','U')]))
+
 def tiene_tres_vocales_distintas(palabra:str) -> bool:
-    n= 0
-    vocales = ['a','e','i','o','u','A','E','I','O','U']
+    n = 0
+    vocales = [('a','A'),('e','E'),('i','I'),('o','O'),('u','U')]
     for letra in palabra:
-        if pertenece(letra,vocales_minus):
+        posicion = obtener_posicion(letra, vocales)
+        if posicion != -1:
             n += 1
-            quitar letra,vocales
+            vocales = quitar(posicion, vocales)
+    return n >= 3
+
+print(tiene_tres_vocales_distintas("jorgei"))
