@@ -38,4 +38,19 @@ def reemplazar_vocales(palabra:str) -> str:
         else:
             nueva_palabra += letra
     return nueva_palabra
-print(reemplazar_vocales("AEIOU,aeiou,sinvocales"))
+
+def da_vuelta_str(palabra:str) -> str:
+    reversa:str = ""
+    for indice in range(0,len(palabra)):
+        reversa += palabra[len(palabra)-1-indice]
+    return reversa
+
+# deja la primera aparicion del elemento
+def eliminar_repetidos(palabra:str) -> str:
+    sin_repetidos:str = ""
+    for letra in palabra:
+        if not pertenece(letra,sin_repetidos):
+            sin_repetidos += letra
+    return sin_repetidos
+
+
