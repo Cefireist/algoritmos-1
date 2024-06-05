@@ -91,7 +91,7 @@ def saldo_actual(historial:list[(chr,int)]) -> int:
         if movimiento[0] == 'R':
             saldo -= movimiento[1]
         elif  movimiento[0] == 'I':
-            saldo += movimiento[i]
+            saldo += movimiento[1]
     return saldo
 
 
